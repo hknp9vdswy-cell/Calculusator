@@ -1,0 +1,4 @@
+([('main',
+   '/Users/laiweichen_personal/Python/Pycharm_Projects/Calculus '
+   'Calculator/dist/main',
+   'EXECUTABLE')],)
