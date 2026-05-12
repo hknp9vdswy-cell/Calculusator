@@ -1,9 +1,6 @@
 The Calculusator is a GUI-based calculator for basic calculus purposes.
 
-Features:
-Analyzing limits
-Derivatives and calculating of rate of change
-Integrals and area between functions
+Its features are analyzing limits, calculating derivatives and calculating integrals
 
 Required libraries:
 pip install numpy sympy matplotlib
