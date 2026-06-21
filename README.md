@@ -4,3 +4,6 @@ Its features are analyzing limits, calculating derivatives and calculating integ
 
 Required libraries:
 pip install numpy sympy matplotlib
+
+NOTES:
+log(x) is the common log with base 10
