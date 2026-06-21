@@ -36,7 +36,7 @@ safe_input = {
     "csch": sp.csch,
     "sech": sp.sech,
     "coth": sp.coth,
-    "log": sp.log,
+    "log": lambda x: sp.log(x, 10),
     "ln": sp.log,
     "log10": lambda x: sp.log(x, 10),
     "sqrt": sp.sqrt,
@@ -47,6 +47,9 @@ safe_input = {
     "floor": sp.floor,
     "ceiling": sp.ceiling,
 }
+
+def sympy_to_display(expr):
+    return str(expr).replace("log(", "ln(").replace("ln(x, 10)", "log(x)")
 
 def validate_and_parse(user_input):
     clean_input = user_input.replace("^", "**")
@@ -113,7 +116,7 @@ def calculate_limit():
         x = sp.Symbol("x")
         app_val = float(raw_x)
         limit_f = sp.limit(f, x, app_val)
-        limit_result_label.config(text=f"{func_input.get()} approaches {limit_f.evalf(4)} when x = {app_val}")
+        limit_result_label.config(text=f"{func_input.get()} approaches {sympy_to_display(limit_f.evalf(4))} when x = {app_val}")
     except Exception as e:
         limit_result_label.config(text="Error in expression")
         print(e)
@@ -172,7 +175,7 @@ def differentiation():
     try:
         x = sp.Symbol("x")
         f_prime = sp.diff(f, x)
-        deriv_result_label.config(text = "d/dx of " + deriv_input.get() + " = " + str(f_prime))
+        deriv_result_label.config(text="d/dx of " + deriv_input.get() + " = " + sympy_to_display(f_prime))
     except Exception as e:
         deriv_result_label.config(text = "Error in expression")
         print(e)
@@ -260,7 +263,7 @@ def antiderivative():
     try:
         x = sp.Symbol("x")
         F = sp.integrate(f, x)
-        antiderivative_label.config(text = "∫ " + str(f_input.get()) + " = " + str(F))
+        antiderivative_label.config(text="∫ " + f_input.get() + " = " + sympy_to_display(F))
     except Exception as e:
         antiderivative_label.config(text = "Error in expression")
         print(e)
